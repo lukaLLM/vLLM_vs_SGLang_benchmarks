@@ -1,0 +1,25 @@
+services:
+  vllm:
+    image: vllm/vllm-openai:v0.10.2
+    container_name: vllm
+    privileged: true # Helps with GPU hardware counters/management
+    environment:
+      - HUGGING_FACE_HUB_TOKEN=${HUGGING_FACE_HUB_TOKEN}
+    ports:
+      - "8000:8000" 
+    ipc: host
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1 # Or 'all'
+              capabilities: [gpu]
+    volumes:
+      - ~/.cache/huggingface:/root/.cache/huggingface
+    command:
+      - --model
+      -  Qwen/Qwen3-Coder-30B-A3B-Instruct-FP8
+      - --gpu_memory_utilization=0.8
+      - --max-model-len=10000
+      #- --max-num-seqs= 128
