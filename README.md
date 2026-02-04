@@ -2,6 +2,10 @@
 
 A comprehensive benchmark comparison between vLLM and SGLang inference engines using the Qwen3-Coder-30B model.
 
+---
+## Youtube Video
+https://www.youtube.com/watch?v=gkl2KlJ7FP0
+
 ## 📋 Overview
 
 This repository contains benchmarking results and configurations for comparing vLLM and SGLang performance on the same hardware and model setup. The benchmarks use the ShareGPT dataset with 1000 prompts to evaluate throughput, latency, and resource utilization.
